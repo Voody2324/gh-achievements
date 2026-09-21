@@ -6,7 +6,11 @@ példa. A repó publikus, a fiók `Voody2324`.
 ## Kiinduló állapot
 
 A profilon három kitüntetés volt: **Pull Shark (x2)**, **Pair Extraordinaire**,
-**YOLO**. Az összevont pull requestek száma 22.
+**YOLO**. Az összevont pull requestek száma 22 — és ebből **mind a 22 privát
+repóban**. Publikus összevont PR a mérés kezdetén nulla volt.
+
+Ez a mondat a legfontosabb lelet az egész naplóban, mert megdönt egy széles
+körben ismételt állítást. Lásd a 4. pontot.
 
 A gépi ellenőrzés parancsa:
 
@@ -59,6 +63,42 @@ Mindhárom megvolt már, de ez a pull request mind a hármat eteti egyszerre:
 - **Pull Shark** — összevont PR, a 23. a fiókon. A következő fokozat (x3) 128-nál van.
 - **YOLO** — összevonás kódellenőrzés nélkül.
 - **Pair Extraordinaire** — `Co-authored-by` sor a commitban. A következő fokozat (x2) 10 társszerzős összevont PR-nál van.
+
+## 4. A privát repók lelete — a közhiedelem cáfolata
+
+A mérés közben kiderült, hogy a repó README-je és a saját Discussions-válaszom
+is hibás állítást tartalmazott. Mindkettő azt mondta, hogy a kitüntetésekhez
+publikus tevékenység kell. Ez ezen a fiókon mérve nem igaz.
+
+| Repó | Privát | Összevont PR | Társszerzős |
+| --- | --- | --- | --- |
+| `Voody2324/veylan` | igen | 14 | 14 |
+| `Voody2324/zoralva` | igen | 7 | 7 |
+| `Voody2324/vhdesk` | igen | 1 | 1 |
+| `Voody2324/gh-achievements` | nem | 1 | 1 |
+
+A Pull Shark **x2** fokozata 16 összevont PR-t kér. A mérés kezdetén 22 PR
+volt, mind privát repóban, és a fokozat megvolt. Ugyanez a Pair Extraordinaire-re
+és a YOLO-ra: mindkettő privát repóban végzett mozgásból származik.
+
+A lekérdezés, amivel ez ellenőrizhető:
+
+```bash
+gh api graphql -f query='{ viewer { pullRequests(states:MERGED, first:100){ nodes {
+  repository{ nameWithOwner isPrivate } } } } }'
+```
+
+A README és a két Discussions-válasz ennek alapján javítva lett. A hibás
+állítást nem töröltük, hanem a javítás mellé odaírtuk, mi volt az eredeti.
+
+## 5. Mennyit késik a jelvény
+
+| Kitüntetés | Mozgás ideje (UTC) | Megjelenés |
+| --- | --- | --- |
+| Quickdraw | 13:10:02 | egy percen belül |
+
+A késés tehát nem egyforma. Aki rögtön a művelet után nézi a profilt és nem
+látja, jó eséllyel nem rontott el semmit.
 
 ## Amit nem lehetett elvégezni
 
