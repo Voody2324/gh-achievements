@@ -110,3 +110,32 @@ szinten is bankkártyás terheléssel. Pénzügyi döntés, nem technikai.
 
 **Pull Shark x3** — 128 összevont PR. A jelenlegi 22-ről ide eljutni valódi
 munkával megy, nem egy munkamenetben.
+
+## 6. Nyitott kérdés: a Pair Extraordinaire nem lép fokozatot
+
+Ezt mértük, és nem tudjuk megmagyarázni.
+
+A fiók **24 összevont pull requestje mind társszerzős**, és a társszerző egy
+létező GitHub-fiók, nem ismeretlen e-mail-cím:
+
+| E-mail | Név | GitHub-fiók |
+| --- | --- | --- |
+| `jodzsi@gmail.com` | Jozsef Arvai | `Voody2324` |
+| `noreply@anthropic.com` | Claude | `claude` |
+
+A Pair Extraordinaire **x2** fokozata 10 társszerzős összevont PR-nál jár,
+az **x3** 24-nél. A profil mégis az alap fokozatot mutatja. A profiloldal
+HTML-je egyértelmű: a fokozatcímke csak a Pull Sharkhoz tartozik.
+
+```bash
+curl -sL "https://github.com/Voody2324?tab=achievements" \
+  | grep -n 'data-achievement-slug\|>x[0-9]<'
+```
+
+Három lehetséges magyarázat, egyiket sem sikerült bizonyítani:
+
+1. A fokozatszámláló kihagyja a bot- és alkalmazásfiókokat társszerzőként.
+2. A fokozat kiértékelése lassabb, mint az alap jelvényé, és napokat késik.
+3. A társszerzőnek a PR-on kívül is kell tevékenységnek lennie a repóban.
+
+Aki ezt olvassa és tudja a választ, nyisson egy Discussions-kérdést.
