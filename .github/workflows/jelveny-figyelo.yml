@@ -1,0 +1,69 @@
+name: Jelvény-figyelő
+
+# A repó nyitott kérdése: megjelenik-e valaha a Galaxy Brain, miután a
+# feltétele teljesült. A mérés kézzel 82 percig futott, eredmény nélkül.
+# Ez a munkafolyamat naponta ránéz, és CSAK akkor szól, ha változott valami.
+# Ha nincs változás, nem csinál semmit: se commit, se issue, se zaj.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  ellenorzes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: A profil jelvényeinek lekérése
+        id: jelvenyek
+        run: |
+          set -euo pipefail
+          PROFIL="https://github.com/${{ github.repository_owner }}?tab=achievements"
+          SLUGOK=$(curl -sL --max-time 30 "$PROFIL" \
+            | grep -oE 'data-achievement-slug="[a-z-]*"' \
+            | sed 's/.*="//;s/"//' | sort -u | tr '\n' ' ')
+          echo "Talált jelvények: ${SLUGOK:-<nincs>}"
+          echo "slugok=$SLUGOK" >> "$GITHUB_OUTPUT"
+          if echo "$SLUGOK" | grep -q 'galaxy-brain'; then
+            echo "galaxy=igen" >> "$GITHUB_OUTPUT"
+          else
+            echo "galaxy=nem" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Összefoglaló a futáshoz
+        run: |
+          {
+            echo "### Jelvény-figyelő"
+            echo ""
+            echo "| Mező | Érték |"
+            echo "| --- | --- |"
+            echo "| Profil | ${{ github.repository_owner }} |"
+            echo "| Talált jelvények | ${{ steps.jelvenyek.outputs.slugok }} |"
+            echo "| Galaxy Brain | ${{ steps.jelvenyek.outputs.galaxy }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Issue nyitása, ha a Galaxy Brain megjelent
+        if: steps.jelvenyek.outputs.galaxy == 'igen'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # Csak egyszer szóljon: ha már van nyitott jelzés, ne nyisson újat.
+          LETEZIK=$(gh issue list --repo "$GITHUB_REPOSITORY" --state all \
+            --search "Galaxy Brain megjelent in:title" --json number --jq 'length')
+          if [ "$LETEZIK" != "0" ]; then
+            echo "Már van ilyen issue, nem nyitok újat."
+            exit 0
+          fi
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "A Galaxy Brain megjelent — a nyitott kérdés eldőlt" \
+            --body "A jelvény-figyelő megtalálta a \`galaxy-brain\` jelvényt a profilon.
+
+Ez azt jelenti, hogy a NAPLO.md 2. pontjában rögzített negatív lelet **csak késés volt**, nem a feltétel hiánya. A napló javításra szorul.
+
+Talált jelvények: \`${{ steps.jelvenyek.outputs.slugok }}\`
+
+Futás: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
