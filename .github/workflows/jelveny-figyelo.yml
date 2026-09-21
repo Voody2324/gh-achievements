@@ -34,36 +34,43 @@ jobs:
           fi
 
       - name: Összefoglaló a futáshoz
+        env:
+          SLUGOK: ${{ steps.jelvenyek.outputs.slugok }}
+          GALAXY: ${{ steps.jelvenyek.outputs.galaxy }}
         run: |
           {
             echo "### Jelvény-figyelő"
             echo ""
             echo "| Mező | Érték |"
             echo "| --- | --- |"
-            echo "| Profil | ${{ github.repository_owner }} |"
-            echo "| Talált jelvények | ${{ steps.jelvenyek.outputs.slugok }} |"
-            echo "| Galaxy Brain | ${{ steps.jelvenyek.outputs.galaxy }} |"
+            echo "| Profil | $GITHUB_REPOSITORY_OWNER |"
+            echo "| Talált jelvények | $SLUGOK |"
+            echo "| Galaxy Brain | $GALAXY |"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Issue nyitása, ha a Galaxy Brain megjelent
         if: steps.jelvenyek.outputs.galaxy == 'igen'
         env:
           GH_TOKEN: ${{ github.token }}
+          SLUGOK: ${{ steps.jelvenyek.outputs.slugok }}
+          FUTAS: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
-          # Csak egyszer szóljon: ha már van nyitott jelzés, ne nyisson újat.
+          # Csak egyszer szóljon: ha már van ilyen jelzés, ne nyisson újat.
           LETEZIK=$(gh issue list --repo "$GITHUB_REPOSITORY" --state all \
             --search "Galaxy Brain megjelent in:title" --json number --jq 'length')
           if [ "$LETEZIK" != "0" ]; then
             echo "Már van ilyen issue, nem nyitok újat."
             exit 0
           fi
+          BODY=$(printf '%s\n' \
+            "A jelvény-figyelő megtalálta a \`galaxy-brain\` jelvényt a profilon." \
+            "" \
+            "Ez azt jelenti, hogy a NAPLO.md 2. pontjában rögzített negatív lelet **csak késés volt**, nem a feltétel hiánya. A napló javításra szorul." \
+            "" \
+            "Talált jelvények: \`$SLUGOK\`" \
+            "" \
+            "Futás: $FUTAS")
           gh issue create --repo "$GITHUB_REPOSITORY" \
             --title "A Galaxy Brain megjelent — a nyitott kérdés eldőlt" \
-            --body "A jelvény-figyelő megtalálta a \`galaxy-brain\` jelvényt a profilon.
-
-Ez azt jelenti, hogy a NAPLO.md 2. pontjában rögzített negatív lelet **csak késés volt**, nem a feltétel hiánya. A napló javításra szorul.
-
-Talált jelvények: \`${{ steps.jelvenyek.outputs.slugok }}\`
-
-Futás: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            --body "$BODY"
