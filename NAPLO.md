@@ -138,4 +138,8 @@ Három lehetséges magyarázat, egyiket sem sikerült bizonyítani:
 2. A fokozat kiértékelése lassabb, mint az alap jelvényé, és napokat késik.
 3. A társszerzőnek a PR-on kívül is kell tevékenységnek lennie a repóban.
 
+A küszöbértékeket két egymástól független közösségi lista is ugyanígy adja meg
+(`Schweinepriester/github-profile-achievements` és `drknzz/GitHub-Achievements`),
+tehát a 24-es ezüstküszöb nem elírás az egyik forrásban. Az anomália marad.
+
 Aki ezt olvassa és tudja a választ, nyisson egy Discussions-kérdést.

@@ -43,6 +43,36 @@ tartja karban.
 | **Open Sourcerer** | kikapcsolva |
 | **Proxima Pioneer / Staffshipper / Staffuser** | belsős, GitHub-alkalmazottaknak |
 
+## Highlights — a másik jelvénysor, amiről kevés szó esik
+
+A profilon az Achievements alatt van egy második sáv, **Highlights** néven.
+Ezek nem tevékenységből járnak, hanem tagságból vagy elismerésből. Könnyű
+átsiklani felettük, pedig az egyik ingyen megszerezhető.
+
+| Highlight | Miből jár | Pénzbe kerül? |
+| --- | --- | --- |
+| **Developer Program Member** | regisztráció a GitHub Developer Programba | nem |
+| **Pro** | GitHub Pro előfizetés | igen |
+| **Security Bug Bounty Hunter** | biztonsági hiba bejelentése a GitHub bug bounty programjában | nem, de nehéz |
+| **Security advisory credit** | elfogadott bejelentés a GitHub Advisory Database-be | nem, de nehéz |
+| **GitHub Campus Expert** | részvétel a GitHub Campus programban | nem, de egyetemi kötöttség |
+
+A **Developer Program Member** a leggyorsabb ezek közül. A feltétel két dolog:
+
+1. Legyen egy integrációd, ami a GitHub API-t használja, éles vagy fejlesztés
+   alatt álló állapotban.
+2. Legyen egy e-mail-cím, amin a GitHub felhasználói elérnek támogatásért.
+
+A regisztráció a <https://github.com/developer/register> címen megy, és ingyenes.
+Saját döntés, mert a nevedet és egy elérhetőségedet adod meg egy űrlapon.
+
+## A jelvény kinézete a bőrszín-beállítástól függ
+
+Két jelvény, a **Starstruck** és a **Quickdraw**, integető kezet ábrázol, és a
+kéz színe az emoji bőrszín-beállításodat követi. A beállítás az
+[appearance settings](https://github.com/settings/appearance) alatt van. Nem
+befolyásolja, hogy megkapod-e, csak azt, hogyan néz ki.
+
 ## Fokozatok
 
 Öt kitüntetésnek van fokozata. A jelvényre kerülő `x2`, `x3`, `x4` címke
