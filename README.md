@@ -60,12 +60,23 @@ A fokozat-ugrások nem lineárisak: a Pull Shark x2 még egy hétvége alatt
 
 ## Két csapda, ami időbe kerül
 
-**A privát repó nem elég.** A kitüntetések a publikus tevékenységet nézik. Ha
-minden munkád privát repóban van, a profilod üres marad akkor is, ha napi
-tíz PR-t vonsz össze.
+**A privát repó igenis számít — a közhiedelem itt téved.** A legtöbb útmutató
+azt írja, hogy csak a publikus tevékenység számít. Ezen a fiókon mérve ez nem
+igaz: **23 összevont pull requestből 22 privát repóban van**, és a Pull Shark
+mégis a **x2** fokozaton áll, ami 16 összevont PR-t kér. A privát PR-ok tehát
+beleszámoltak.
 
-**A megjelenés késik.** A jelvény nem a művelet pillanatában kerül ki a
-profilra. Percek, néha órák. Ha közvetlenül utána nézed, ne ijedj meg.
+```bash
+gh api graphql -f query='{ viewer { pullRequests(states:MERGED, first:100){ nodes {
+  repository{ nameWithOwner isPrivate } } } } }'
+```
+
+Amit viszont érdemes bekapcsolni: a profilbeállításokban a privát hozzájárulások
+megjelenítése. E nélkül a privát munka nem látszik a profilodon.
+
+**A megjelenés késik, de nem egyformán.** A Quickdraw ezen a repón egy percen
+belül kikerült a profilra. A Galaxy Brain ennél lassabb. Ha közvetlenül a
+művelet után nézed és nincs ott, ne kezdj hibát keresni.
 
 ## Mérési napló
 
