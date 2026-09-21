@@ -67,9 +67,11 @@ kategóriában, publikus repóban —, a jelvény mégsem jelent meg.
 | kategória `isAnswerable` | igen |
 | repó publikus | igen |
 | jelvény 20 perc után | nincs |
+| jelvény 82 perc után | nincs |
 
 Az összehasonlítás miatt fontos, hogy a **Quickdraw ugyanezen a repón egy
-percen belül kikerült**. Húsz perc tehát nem magyarázható pusztán késéssel.
+percen belül kikerült**. A két mérés között nyolcvankétszeres a különbség,
+ami nem magyarázható a feldolgozási sorral.
 
 A legvalószínűbb magyarázat, hogy a **saját kérdésre adott saját válasz nem
 számít**. Mindkét válasz szerzője ugyanaz a fiók, aki a kérdést feltette:
@@ -83,8 +85,19 @@ Ez illeszkedik ahhoz, amit a GitHub 2024-ben tett: a Community Discussions
 kivonása is spam elleni lépés volt. Az önválasz kizárása ugyanennek a logikának
 a folytatása lenne.
 
-**Amit ez nem bizonyít:** hogy a jelvény soha nem jön meg. Csak azt, hogy húsz
-perc alatt nem jött. A mérés folytatódik, az eredmény ide kerül.
+A mérés két lehetséges mechanizmust hagy nyitva, és egyedül nem lehet
+szétválasztani őket:
+
+1. A saját kérdésre adott saját válasz nem számít.
+2. A saját tulajdonú repóban adott válasz nem számít, akkor sem, ha más kérdez.
+
+Mindkettőből ugyanaz következik a gyakorlatban: **más ember kérdése kell**.
+
+**Amit ez nem bizonyít:** hogy a jelvény soha nem jön meg. Csak azt, hogy
+nyolcvankét perc alatt nem jött. A kérdést nem hagytuk nyitva: a repóba került
+egy [munkafolyamat](.github/workflows/jelveny-figyelo.yml), ami naponta ránéz
+a profilra, és issue-t nyit, ha a jelvény mégis megjelenik. Ha nincs változás,
+nem csinál semmit.
 
 **Amit viszont jelent a gyakorlatban:** a Galaxy Brain az egyetlen olyan
 kitüntetés az „egyedül megszerezhető" listán, amihez mérhetően **más ember
@@ -130,13 +143,13 @@ A README és a két Discussions-válasz ennek alapján javítva lett. A hibás
 | Kitüntetés | Mozgás ideje (UTC) | Megjelenés |
 | --- | --- | --- |
 | Quickdraw | 13:10:02 | egy percen belül |
-| Galaxy Brain | 13:10:40 | 20 perc után sem |
+| Galaxy Brain | 13:10:40 | 82 perc után sem |
 
 A késés tehát nem egyforma. Aki rögtön a művelet után nézi a profilt és nem
 látja, jó eséllyel nem rontott el semmit.
 
 De van egy határ, ahol a „csak késik" magyarázat elfogy. Ha az egyik jelvény
-egy percen belül kint van, a másik pedig húsz perc után sincs, akkor a
+egy percen belül kint van, a másik pedig nyolcvankét perc után sincs, akkor a
 különbség már nem a feldolgozási sorban van, hanem a feltételben.
 
 ## Amit nem lehetett elvégezni
