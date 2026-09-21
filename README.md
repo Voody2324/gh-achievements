@@ -24,7 +24,7 @@ tartja karban.
 | **YOLO** | saját PR összevonása kódellenőrzés nélkül | igen |
 | **Quickdraw** | issue vagy PR lezárása a nyitástól számított 5 percen belül | igen |
 | **Pair Extraordinaire** | társszerzős (`Co-authored-by`) commit egy összevont PR-ban | igen, ha van kivel |
-| **Galaxy Brain** | 2 elfogadott válasz Discussions alatt | saját repóban kipróbálható |
+| **Galaxy Brain** | 2 elfogadott válasz Discussions alatt | önválasszal nem jött, [lásd a naplót](NAPLO.md) |
 
 ### Megszerezhető, de kell hozzá más
 

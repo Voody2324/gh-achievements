@@ -56,6 +56,40 @@ GraphQL-mutáció.
 Discussions felületét a kitüntetés alól, spam elleni védelemként. Saját repó
 Discussions rovata nem esett ebbe.
 
+### Az eredmény: nem jött meg
+
+A hivatalos feltétel teljesült — két elfogadott válasz, válaszolható
+kategóriában, publikus repóban —, a jelvény mégsem jelent meg.
+
+| Ellenőrzés | Eredmény |
+| --- | --- |
+| elfogadott válasz | 2 |
+| kategória `isAnswerable` | igen |
+| repó publikus | igen |
+| jelvény 20 perc után | nincs |
+
+Az összehasonlítás miatt fontos, hogy a **Quickdraw ugyanezen a repón egy
+percen belül kikerült**. Húsz perc tehát nem magyarázható pusztán késéssel.
+
+A legvalószínűbb magyarázat, hogy a **saját kérdésre adott saját válasz nem
+számít**. Mindkét válasz szerzője ugyanaz a fiók, aki a kérdést feltette:
+
+```bash
+gh api graphql -f query='{ repository(owner:"Voody2324",name:"gh-achievements"){
+  discussions(first:10){ nodes{ number isAnswered answer{ author{ login } } } } } }'
+```
+
+Ez illeszkedik ahhoz, amit a GitHub 2024-ben tett: a Community Discussions
+kivonása is spam elleni lépés volt. Az önválasz kizárása ugyanennek a logikának
+a folytatása lenne.
+
+**Amit ez nem bizonyít:** hogy a jelvény soha nem jön meg. Csak azt, hogy húsz
+perc alatt nem jött. A mérés folytatódik, az eredmény ide kerül.
+
+**Amit viszont jelent a gyakorlatban:** a Galaxy Brain az egyetlen olyan
+kitüntetés az „egyedül megszerezhető" listán, amihez mérhetően **más ember
+kérdése** kell. Ezzel átkerül a Starstruck mellé.
+
 ## 3. Pull Shark, YOLO, Pair Extraordinaire
 
 Mindhárom megvolt már, de ez a pull request mind a hármat eteti egyszerre:
@@ -96,11 +130,20 @@ A README és a két Discussions-válasz ennek alapján javítva lett. A hibás
 | Kitüntetés | Mozgás ideje (UTC) | Megjelenés |
 | --- | --- | --- |
 | Quickdraw | 13:10:02 | egy percen belül |
+| Galaxy Brain | 13:10:40 | 20 perc után sem |
 
 A késés tehát nem egyforma. Aki rögtön a művelet után nézi a profilt és nem
 látja, jó eséllyel nem rontott el semmit.
 
+De van egy határ, ahol a „csak késik" magyarázat elfogy. Ha az egyik jelvény
+egy percen belül kint van, a másik pedig húsz perc után sincs, akkor a
+különbség már nem a feldolgozási sorban van, hanem a feltételben.
+
 ## Amit nem lehetett elvégezni
+
+**Galaxy Brain** — a feltétel teljesült, a jelvény nem jött meg. A mérés
+szerint más ember kérdése kell hozzá, nem elég a saját kérdésre adott saját
+válasz. Lásd a 2. pontot.
 
 **Starstruck** — 16 csillag kell egy repóra. Ebből egy saját csillagozással
 megvan, a maradék 15 másik emberen múlik. Nem kerülhető meg.
