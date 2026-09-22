@@ -24,14 +24,37 @@ tartja karban.
 | **YOLO** | saját PR összevonása kódellenőrzés nélkül | igen |
 | **Quickdraw** | issue vagy PR lezárása a nyitástól számított 5 percen belül | igen |
 | **Pair Extraordinaire** | társszerzős (`Co-authored-by`) commit egy összevont PR-ban | igen, ha van kivel |
-| **Galaxy Brain** | 2 elfogadott válasz Discussions alatt | önválasszal nem jött, [lásd a naplót](NAPLO.md) |
+
+A Galaxy Brain sokáig ezen a listán szerepelt nálunk is. A mérés áttette a
+következőre, mert önválasszal nem jár. Lásd a [naplót](NAPLO.md).
 
 ### Megszerezhető, de kell hozzá más
 
 | Kitüntetés | Miből jár | Mi kell hozzá |
 | --- | --- | --- |
+| **Galaxy Brain** | 2 elfogadott válasz | **más ember kérdése**, lásd alább |
 | **Starstruck** | 16 csillag egy általad létrehozott repón | 16 másik ember |
 | **Public Sponsor** | nyílt forrású munka támogatása GitHub Sponsorson | bankkártya |
+
+#### A Galaxy Brain nem zsákutca, csak rossz helyen kerestük
+
+A mérésünk azt mutatta, hogy saját repóban, saját kérdésre adott saját
+válasszal nem jár. Ebből könnyű levonni azt a téves következtetést, hogy
+tehetetlen vagy. Nem: a feltétel nem az, hogy **téged** kérdezzenek, hanem az,
+hogy a kérdés szerzője **elfogadja a válaszodat**.
+
+Az út tehát adott, és nem kell hozzá megvárni senkit:
+
+1. Keress publikus repókat, ahol be van kapcsolva a Discussions, és van
+   megválaszolatlan kérdés a Q&A kategóriában.
+2. Válaszolj érdemben, a saját szakterületeden.
+3. Ha a kérdező elfogadja a válaszod, az egy pont. Kettő kell.
+
+Keresés a GitHub felületén: a Discussions keresőben a
+`is:open is:unanswered category:Q&A` szűrő adja a megválaszolatlan kérdéseket.
+
+Ez az egyetlen kitüntetés, ami valódi közösségi részvételt kér, nem pedig
+saját mozgást. Ettől a leglassabb, és ettől a legértékesebb is.
 
 ### Már nem szerezhető meg
 
@@ -42,6 +65,27 @@ tartja karban.
 | **Heart On Your Sleeve** | kikapcsolva |
 | **Open Sourcerer** | kikapcsolva |
 | **Proxima Pioneer / Staffshipper / Staffuser** | belsős, GitHub-alkalmazottaknak |
+
+### Ismeretlen: Kintsugi
+
+2026. szeptember 17-én valaki észrevett egy addig sehol nem dokumentált
+jelvényt a GitHub saját változásnaplójának egyik illusztrációján. A neve a
+képen látható japán kerámiajavító technikáról kapta: a **kintsugi** arannyal
+ragasztja össze a törött edényt, és ettől értékesebb lesz, mint ép korában.
+
+Amit tudni lehet róla:
+
+| Kérdés | Válasz |
+| --- | --- |
+| Létezik a jelvény? | a képen igen |
+| Van hivatalos bejelentés? | nincs |
+| Ismert a feltétele? | nem |
+| Válaszolt a GitHub? | nem |
+
+A találgatások szerint vagy kiadatlan jelvény, vagy egy meglévő fokozat-változat,
+vagy díszlet a képen. Addig, amíg a GitHub nem szólal meg, ez nem cél, hanem
+kuriózum. A bejelentés
+[itt](https://github.com/orgs/community/discussions/208142) olvasható.
 
 ## Highlights — a másik jelvénysor, amiről kevés szó esik
 
@@ -87,6 +131,13 @@ bronz, ezüst, arany.
 
 A fokozat-ugrások nem lineárisak: a Pull Shark x2 még egy hétvége alatt
 összejön, az x3-hoz 128 összevont PR kell.
+
+**2026. szeptember 11-től a profil a legmagasabb elért fokozatot mutatja.** Ez
+egy friss GitHub-változás, és élesíti a naplónk 6. pontjában rögzített
+anomáliát. Korábban még lehetett azzal magyarázni a hiányzó Pair Extraordinaire
+fokozatot, hogy a profil nem a legmagasabbat jeleníti meg. Ez a magyarázat
+elfogyott. A jelenség marad: 24 társszerzős összevont PR, és semmilyen
+fokozatcímke.
 
 ## Két csapda, ami időbe kerül
 

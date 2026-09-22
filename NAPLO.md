@@ -198,4 +198,15 @@ A küszöbértékeket két egymástól független közösségi lista is ugyaníg
 (`Schweinepriester/github-profile-achievements` és `drknzz/GitHub-Achievements`),
 tehát a 24-es ezüstküszöb nem elírás az egyik forrásban. Az anomália marad.
 
+**Egy magyarázat időközben elfogyott.** 2026. szeptember 11-én a GitHub
+[bejelentette](https://github.blog/changelog/2026-09-11-profiles-now-show-your-highest-achievement-badge-tier/),
+hogy a profil ezentúl a legmagasabb elért fokozatot mutatja a többszintű
+kitüntetéseknél. Eddig lehetett azzal érvelni, hogy a fokozat megvan, csak a
+megjelenítés nem követi. Ez az érv megszűnt. A mérés tíz nappal a változás
+után készült, és a profil továbbra is fokozat nélkül mutatja a jelvényt.
+
+Marad a legvalószínűbb ok: a társszerző egy **alkalmazásfiók** (`claude`), és a
+fokozatszámláló vélhetően nem veszi figyelembe. Az alap jelvényhez elég volt,
+a fokozathoz nem. Ez továbbra sem bizonyított.
+
 Aki ezt olvassa és tudja a választ, nyisson egy Discussions-kérdést.
